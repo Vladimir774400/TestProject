@@ -4,7 +4,7 @@
 - Junit
 
 Для запуска:
-- Распаковать проект
+- Распаковать(клонировать) проект
 - Прописать корректный путь до хром драйвера в классе Initialize.java тут
 System.setProperty("webdriver.chrome.driver", "C:\\cygwin64\\home\\vnartov\\testProject\\src\\libs\\chromedriver.exe");
 - Должен быть установен maven (Проверить можно mvn -v)
