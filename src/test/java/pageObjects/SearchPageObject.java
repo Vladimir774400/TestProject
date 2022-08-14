@@ -3,9 +3,9 @@ package pageObjects;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObjects.MainPageObject;
 
 import java.util.List;
 
@@ -24,7 +24,8 @@ public class SearchPageObject extends MainPageObject {
             RESULTS_PAGE = "//*[@id='result-stats']",
             PICTURES_DIV = "//*[@id='islrg']",
             APP_STORE_RATING = "/html/body/div[5]/main/div[2]/section[1]/div/div[2]/header/ul[1]/li[2]/ul/li/figure/figcaption",
-            WIKI_CONTENT_CONTAINER = "mw-content-text";
+            WIKI_CONTENT_CONTAINER = "mw-content-text",
+            JUST_FOR_TEST = ".{SUBSTRING}";
 
     //Методы
     //Метод поиска через google
@@ -128,6 +129,26 @@ public class SearchPageObject extends MainPageObject {
                 }
             }
             goToPage(i);
+        }
+    }
+
+    //Метод забирает определенный атрибут определенного class элемента
+    public void getSomeAttrByClass(String cls ,String atr)
+    {
+        try {
+            String elementClass = JUST_FOR_TEST.replace("{SUBSTRING}",cls);
+            List <WebElement> element = driver.findElements(By.cssSelector(elementClass));
+            System.out.println("Нашлось "+element.size()+" элементов с классом "+elementClass+"");
+            for (int i=0; i<element.size();i++)
+            {
+                String elemAttr = element.get(i).getAttribute(atr);
+                System.out.println("Аттрибут '"+((i)+1)+"' элемента '"+atr+"' равен '"+elemAttr+"'");
+            }
+        }
+        catch (NoSuchElementException e)
+        {
+            System.out.println("Елемент с классом "+cls+" не найден");
+            Assert.assertTrue(e.equals(null));
         }
     }
 }

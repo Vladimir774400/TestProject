@@ -13,7 +13,6 @@ public class TestGooglePlay extends testsAndInit.Initialize {
     @Test
     public void testGooglePlay() {
         SearchPageObject searchPageObject = new SearchPageObject(driver);
-        searchPageObject.searchInGoogle("ivi");
-        searchPageObject.searchAppStoreAndCheckRate();
+        searchPageObject.getSomeAttrByClass("lnXdpd", "src");
     }
 }
