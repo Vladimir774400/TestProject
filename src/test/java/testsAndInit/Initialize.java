@@ -12,9 +12,9 @@ public class Initialize {
 
     @Before
     public void setUp() {
-        System.out.println("- Начинаю тест");
-        //Путь до chromeDriver
-        System.setProperty("webdriver.chrome.driver", "C:\\cygwin64\\home\\vnartov\\testProject\\src\\libs\\chromedriver.exe");
+        System.out.println("- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
+        //пїЅпїЅпїЅпїЅ пїЅпїЅ chromeDriver
+        System.setProperty("webdriver.chrome.driver", "/Users/annaklimakina/IdeaProjects/TestProject/src/libs/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://qaautomation-test.s3-eu-west-1.amazonaws.com/index.html");
         driver.manage().window().maximize();
@@ -24,7 +24,7 @@ public class Initialize {
 
     @After
     public void tearDown() {
-        System.out.println("- Завершение теста");
+        System.out.println("- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
         driver.quit();
     }
 }
