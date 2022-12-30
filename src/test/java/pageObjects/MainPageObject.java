@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -65,8 +66,13 @@ public class MainPageObject {
         return resp;
     }
 
-    @Step("Wait for element {0} present")
+    @Step("Open URL {0}")
+    public void openCustomPage(String url) {
+        driver.get(url);
+        driver.manage().window().maximize();
+    }
 
+    @Step("Wait for element {0} present")
     public WebElement waitForElementPresent(By by, String err_mes, long timeoutInSec) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSec);
         wait.withMessage(err_mes + "\n");
@@ -104,6 +110,7 @@ public class MainPageObject {
 
     @Step("Search in Google method")
     public void searchInGoogle(String text, long timeoutInSec) {
+        openCustomPage("https://www.google.com/");
         waitForElementAndTypeText(text, By.cssSelector(GOOGLE_SEARCH_FIELD),"Google search field not found",timeoutInSec);
         waitForElementPresentAndClick(By.cssSelector(GOOGLE_SEARCH_BUTTON),"Google search bttn not found",timeoutInSec);
         List<WebElement> titlesWebEl = driver.findElements(By.cssSelector(GOOGLE_SEARCH_TITLES));
