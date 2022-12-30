@@ -34,6 +34,7 @@ public class FirstTest {
         MainPageObject mainPageObject = new MainPageObject(driver);
         Thread.sleep(3_000);
         mainPageObject.searchInGoogle("Java",20);
+        mainPageObject.clickOnSearchResult(2);
     }
 
     @AfterAll

@@ -65,6 +65,8 @@ public class MainPageObject {
         return resp;
     }
 
+    @Step("Wait for element {0} present")
+
     public WebElement waitForElementPresent(By by, String err_mes, long timeoutInSec) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSec);
         wait.withMessage(err_mes + "\n");
@@ -72,6 +74,7 @@ public class MainPageObject {
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    @Step("Wait for element {0} not present")
     public boolean waitForElementNotPresent(By by, String err_mes, long timeoutInSec) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSec);
         wait.withMessage(err_mes + "\n");
@@ -79,6 +82,7 @@ public class MainPageObject {
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
+    @Step("Wait for element {1} and type text {0}")
     public void waitForElementAndTypeText(String text, By by, String err_mes, long timeoutInSec) {
         WebElement field = waitForElementPresent(by, err_mes, timeoutInSec);
         field.click();
@@ -142,14 +146,12 @@ public class MainPageObject {
     @Step("Return element contains text {0}")
     public WebElement returnElementContainsText(String text) {
         String searchedText = ELEMENT_CONTAINS_TEXT.replace("{SUBSTRING}", text);
-        WebElement element = waitForElementPresent(By.xpath(searchedText), "No element with text " + text, 15);
-        return element;
+        return waitForElementPresent(By.xpath(searchedText), "No element with text " + text, 15);
     }
 
     @Step("Return all elements with URL starts with {0}")
     public List<WebElement> findAllElementsWithUrlStartsWith(String text) {
         String searchedUrl = URL_STARTS_WITH.replace("{SUBSTRING}", text);
-        List<WebElement> elements = driver.findElements(By.cssSelector(searchedUrl));
-        return elements;
+        return driver.findElements(By.cssSelector(searchedUrl));
     }
 }
