@@ -34,17 +34,7 @@ public class MainPageObject {
             GOOGLE_SEARCH_BUTTON = "[class='gNO89b']",
             GOOGLE_SEARCH_TITLES = "[class='LC20lb MBeuO DKV0Md']",
             GOOGLE_SEARCH_PAGES = "[role='navigation']",
-            AMAZON_DESC = "[id='feature-bullets']",
-            CART_LOADING = "[id='loading']",
-            TOTAL_AMOUNT = "[id='totalAmount']",
-            PROMO_CODE_FIELD = "[id='promoCode']",
-            FIRST_NAME_FIELD = "[name='firstName']",
-            LAST_NAME_FIELD = "[name='lastName']",
-            CART_NAME_FIELD = "[name='cc-name']",
-            CART_NUM_FIELD = "[name='cc-number']",
-            CART_EXP_FIELD = "[name='cc-expiration']",
-            CART_CCV_FIELD = "[name='cc-cvv']",
-            SUCCESS_MESS = "[id='success']";
+            AMAZON_DESC = "[id='feature-bullets']";
 
 
     @Step("POST - {0}")
