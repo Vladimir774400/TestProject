@@ -6,12 +6,12 @@ import io.restassured.response.Response;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,6 +33,8 @@ public class MainPageObject {
             GOOGLE_SEARCH_FIELD = "[class='gLFyf']",
             GOOGLE_SEARCH_BUTTON = "[class='gNO89b']",
             GOOGLE_SEARCH_TITLES = "[class='LC20lb MBeuO DKV0Md']",
+            GOOGLE_SEARCH_PAGES = "[role='navigation']",
+            AMAZON_DESC = "[id='feature-bullets']",
             CART_LOADING = "[id='loading']",
             TOTAL_AMOUNT = "[id='totalAmount']",
             PROMO_CODE_FIELD = "[id='promoCode']",
@@ -76,8 +78,13 @@ public class MainPageObject {
     public WebElement waitForElementPresent(By by, String err_mes, long timeoutInSec) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSec);
         wait.withMessage(err_mes + "\n");
-
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    @Step("sout element content")
+    public void soutElementText(By by) {
+        WebElement element = driver.findElement(by);
+        System.out.println(element.getText());
     }
 
     @Step("Wait for element {0} not present")
@@ -160,5 +167,13 @@ public class MainPageObject {
     public List<WebElement> findAllElementsWithUrlStartsWith(String text) {
         String searchedUrl = URL_STARTS_WITH.replace("{SUBSTRING}", text);
         return driver.findElements(By.cssSelector(searchedUrl));
+    }
+
+    @Step("Scroll to some element {0}")
+    public void scrollToSomeElement() {
+        WebElement pages = driver.findElement(By.cssSelector(GOOGLE_SEARCH_PAGES));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(pages);
+        actions.perform();
     }
 }

@@ -1,7 +1,7 @@
 package utils;
 
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -25,9 +25,9 @@ public class InitClass {
         driver.manage().window().maximize();
     }
 
-    @AfterAll
+    @AfterEach
     @Step("Tear down")
-    public static void tearDown() {
+    public void tearDown() {
         driver.quit();
     }
 }
