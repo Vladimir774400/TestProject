@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static pageObjects.MainPageObject.AMAZON_DESC;
+import static pageObjects.MainPageObject.GOOGLE_SEARCH_PAGES;
 
 @DisplayName("Google tests")
 public class FirstTest extends InitClass {
@@ -24,7 +25,8 @@ public class FirstTest extends InitClass {
     public void googleSearchUiTest() throws InterruptedException {
         openMainUrl();
         mainPageObject.searchInGoogle("Java", 20);
-        mainPageObject.clickOnSearchResult(2);
+        mainPageObject.scrollCustomTimes(2);
+//        mainPageObject.clickOnSearchResult(2);
         Thread.sleep(3_000);
     }
 

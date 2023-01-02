@@ -4,12 +4,14 @@ import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -160,10 +162,28 @@ public class MainPageObject {
     }
 
     @Step("Scroll to some element {0}")
-    public void scrollToSomeElement() {
-        WebElement pages = driver.findElement(By.cssSelector(GOOGLE_SEARCH_PAGES));
+    public void scrollToSomeElementByCss(String by) {
+        WebElement pages = driver.findElement(By.cssSelector(by));
+        int maxCount = 40;
         Actions actions = new Actions(driver);
-        actions.moveToElement(pages);
-        actions.perform();
+
+        for (int i =0;i<maxCount;i++) {
+            if (pages.isDisplayed()) {
+                actions.sendKeys(Keys.PAGE_DOWN);
+                actions.perform();
+            } else {
+                System.out.println("Element found after "+i+" scrols down");
+                break;
+            }
+        }
+    }
+
+    @Step("Scroll to some element {0}")
+    public void scrollCustomTimes(int times) {
+        Actions actions = new Actions(driver);
+        for (int i =0;i<times;i++) {
+                actions.sendKeys(Keys.PAGE_DOWN);
+                actions.perform();
+        }
     }
 }
