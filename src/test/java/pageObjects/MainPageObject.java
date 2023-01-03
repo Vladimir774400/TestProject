@@ -178,7 +178,7 @@ public class MainPageObject {
         }
     }
 
-    @Step("Scroll to some element {0}")
+    @Step("Scroll {0} times")
     public void scrollCustomTimes(int times) {
         Actions actions = new Actions(driver);
         for (int i =0;i<times;i++) {
