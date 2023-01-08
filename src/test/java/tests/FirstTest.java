@@ -2,6 +2,7 @@ package tests;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pageObjects.MainPageObject;
@@ -14,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 import static pageObjects.MainPageObject.AMAZON_DESC;
-import static pageObjects.MainPageObject.GOOGLE_SEARCH_PAGES;
 
 @DisplayName("Google tests")
 public class FirstTest extends InitClass {
@@ -37,6 +37,14 @@ public class FirstTest extends InitClass {
         mainPageObject.openCustomPage("https://www.amazon.com/Beats-Studio-Cancelling-Earbuds-Built-Bluetooth-Headphones/dp/B09WQ1FB5R?ref_=Oct_DLandingS_D_f56073f1_66");
         mainPageObject.soutElementText(By.cssSelector(AMAZON_DESC));
         Thread.sleep(3_000);
+    }
+
+    @Test
+    @DisplayName("Is Poly test")
+//    @RepeatedTest(value = 5, name = "{displayName} - repetition {currentRepetition} of {totalRepetitions}")
+    public void isPolyTest(){
+        mainPageObject.isPoly("wowow");
+        mainPageObject.isLettersOnly("wowo1");
     }
 
     @Test

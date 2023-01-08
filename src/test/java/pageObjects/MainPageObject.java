@@ -186,4 +186,16 @@ public class MainPageObject {
                 actions.perform();
         }
     }
+
+    @Step("Is word {0} polyndrome")
+    public void isPoly(String word) {
+        for (int i=0;i<word.length();i++) {
+            assertEquals(word.charAt(i), word.charAt(word.length() - 1 - i), "Word is not polyndrome: letter "+word.charAt(i)+" not equals " +word.charAt(word.length() - 1 - i));
+        }
+    }
+
+    @Step("Is word {0} contains only letters")
+    public void isLettersOnly(String word) {
+        assertEquals(word.replaceAll("\\d",""),word,"Word contains digits");
+    }
 }
