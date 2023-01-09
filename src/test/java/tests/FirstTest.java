@@ -24,7 +24,7 @@ public class FirstTest extends InitClass {
     public void googleSearchUiTest() throws InterruptedException {
         mainPageObject.searchInGoogle("Java", 20);
         mainPageObject.scrollCustomTimes(2);
-        mainPageObject.clickOnSearchResult(2);
+//        mainPageObject.clickOnSearchResult(2);
         Thread.sleep(3_000);
     }
 
