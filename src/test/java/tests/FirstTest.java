@@ -2,7 +2,6 @@ package tests;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pageObjects.MainPageObject;
@@ -23,7 +22,6 @@ public class FirstTest extends InitClass {
     @Test
     @DisplayName("Google search test")
     public void googleSearchUiTest() throws InterruptedException {
-        openMainUrl();
         mainPageObject.searchInGoogle("Java", 20);
         mainPageObject.scrollCustomTimes(2);
 //        mainPageObject.clickOnSearchResult(2);
@@ -33,7 +31,6 @@ public class FirstTest extends InitClass {
     @Test
     @DisplayName("Max page amount test")
     public void maxPageCountTest() throws InterruptedException {
-        openMainUrl();
         mainPageObject.openCustomPage("https://www.amazon.com/Beats-Studio-Cancelling-Earbuds-Built-Bluetooth-Headphones/dp/B09WQ1FB5R?ref_=Oct_DLandingS_D_f56073f1_66");
         mainPageObject.soutElementText(By.cssSelector(AMAZON_DESC));
         Thread.sleep(3_000);
